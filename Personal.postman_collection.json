@@ -1,0 +1,326 @@
+{
+	"info": {
+		"_postman_id": "50c0a3b8-2f27-4aac-afb4-35a8cba3057b",
+		"name": "Personal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8920318"
+	},
+	"item": [
+		{
+			"name": "Create Question",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"question\": {\n    \"id\":111,\n    \"title\": \"What is Java?\",\n    \"description\": \"details about java\",\n    \"tagList\": [\n      {\n        \"id\":55,\n        \"tagName\": \"Java Core\",\n        \"tagDescription\": \"Core Concepts\"\n      }\n    ]\n  },\n  \"user\": {\n    \"id\":1,\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"username\": \"john.doe\"\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/question/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"question",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"username\": \"johndoe\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/user/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add tag to a question",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"tag\": {\n    \"id\":2,\n    \"tagName\": \"Java\",\n    \"tagDescription\": \"Programming language\"\n  },\n  \"question\": {\n    \"id\": 111,\n    \"title\": \"What is Java?\",\n    \"description\": \"details about java\"\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/tag/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"tag",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all answers for a question",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/answers/question/111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"answers",
+						"question",
+						"111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Answering to a question",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"answer\": \"Java is OOPs orieinted\",\n    \"questionId\": 111\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/answers/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"answers",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Answering to a answer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"answer\": \"No, it is not!\",\n    \"questionId\": 111,\n    \"parentAnswerId\":1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/answers/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"answers",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upvote a question",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/question/111/upvote",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"question",
+						"111",
+						"upvote"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upvote an answer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/answers/1/upvote",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"answers",
+						"1",
+						"upvote"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Top questions by upvote",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/question/top?sortBy=upvote&limit=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"question",
+						"top"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "upvote"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search by Tag",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/search/tags?query=java",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"search",
+						"tags"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "java"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search by Questions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/search/questions?query=java",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"search",
+						"questions"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "java"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search by Answers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/search/answers?query=java",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"search",
+						"answers"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "java"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
