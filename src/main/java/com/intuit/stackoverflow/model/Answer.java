@@ -26,7 +26,6 @@ public class Answer {
     @Column(name = "upvote_count")
     private Integer upvoteCount;
 
-    // Add a relationship to itself for hierarchical structure
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "parent_id")
