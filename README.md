@@ -39,6 +39,7 @@ To run the collection:
 
 
 ### Regardless of the features implemented, many things can be improved like:
+* A global fallback page can be created for handling error.
 * Some APIs don't need a request body and can be done from request params.
 * Multiple tasks can be done with needing extra attributes in a class.
 * All the unique ids of classes can be made auto-increment.
